@@ -2,6 +2,7 @@
 Part 5 of the Full Stack online course https://fullstackopen.com/en/part5
 
 ## Exercise 5.1: bloglist frontend, step1
+**Task:**
 Clone the application from [GitHub](https://github.com/fullstack-hy2020/bloglist-frontend) with the command:
 ```
 git clone https://github.com/fullstack-hy2020/bloglist-frontend
@@ -49,3 +50,6 @@ return (
 )
 }
 ```
+
+**Solution:**
+Log in functionality implemented according to the course material.
