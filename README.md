@@ -53,3 +53,13 @@ return (
 
 **Solution:**
 Log in functionality implemented according to the course material.
+
+## Exercise 5.2: bloglist frontend, step2
+**Task:**
+Make the login 'permanent' by using the local storage. Also implement a way to log out.
+
+fullstack content
+Ensure the browser does not remember the details of the user after logging out.
+
+**Solution:**
+Log out functionality implemented as instructed in the course material. 
