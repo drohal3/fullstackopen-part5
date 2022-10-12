@@ -84,3 +84,16 @@ The notifications must be visible for a few seconds. It is not compulsory to add
 
 **Solution:**
 Reused notifications from the part 3
+
+## Exercise 5.5 Blog list frontend, step5
+**Task**
+Change the form for creating blog posts so that it is only displayed when appropriate. Use functionality similar to what was shown [earlier in this part of the course material](https://fullstackopen.com/en/part5/props_children_and_proptypes#displaying-the-login-form-only-when-appropriate). If you wish to do so, you can use the Togglable component defined in part 5.
+
+By default the form is not visible
+
+It expands when button create new blog is clicked
+
+The form closes when a new blog is created.
+
+**Solution:**
+Implemented as instructed
