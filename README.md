@@ -63,3 +63,10 @@ Ensure the browser does not remember the details of the user after logging out.
 
 **Solution:**
 Log out functionality implemented as instructed in the course material. 
+
+## Exercise 5.3: bloglist frontend, step3
+**Task:**
+Expand your application to allow a logged-in user to add new blogs
+
+**Solution:**
+Adding a new blog implemented.
