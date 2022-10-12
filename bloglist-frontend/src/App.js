@@ -3,6 +3,14 @@ import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
+const Notification = ({message, type}) => {
+  let notificationClass = `notification ${type}`
+
+  return message !== 'none' ? (<div className={notificationClass}>
+    <p>{message}</p>
+  </div>) : null
+}
+
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
@@ -12,6 +20,12 @@ const App = () => {
   const [newTitle, setNewTitle] = useState('')
   const [newAuthor, setNewAuthor] = useState('')
   const [newUrl, setNewUrl] = useState('')
+
+  const MessageTypes = {
+    Success: "success", Error: "error", None: "none"
+  }
+  const [message, setMessage] = useState(MessageTypes.None)
+  const [messageType, setMessageType] = useState(MessageTypes.None)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -43,7 +57,11 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-
+      setMessage("Wrong username or password.")
+      setMessageType(MessageTypes.Error)
+      setTimeout(() => {
+        setMessage(MessageTypes.None)
+      }, 5000)
     }
   }
 
@@ -56,8 +74,24 @@ const App = () => {
 
   const handleNewBlog = async (event) => {
     event.preventDefault()
-    const newBlog = await blogService.create({title: newTitle, author: newAuthor, url: newUrl})
-    setBlogs(blogs.concat(newBlog))
+
+    try {
+      const newBlog = await blogService.create({title: newTitle, author: newAuthor, url: newUrl})
+      setBlogs(blogs.concat(newBlog))
+
+      setMessage(`A new blog${newBlog.name} by ${newBlog.author} added`)
+      setMessageType(MessageTypes.Success)
+      setTimeout(() => {
+        setMessage(MessageTypes.None)
+      }, 5000)
+    } catch (e) {
+      setMessage("Error, new blog could not be added.")
+      setMessageType(MessageTypes.Error)
+      setTimeout(() => {
+        setMessage(MessageTypes.None)
+      }, 5000)
+    }
+
   }
 
   const loginForm = () => (
@@ -107,6 +141,7 @@ const App = () => {
 
   return (
     <div>
+      <Notification message={message} type={messageType}/>
       {user === null ?
         loginForm() :
         blogList()

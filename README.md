@@ -70,3 +70,17 @@ Expand your application to allow a logged-in user to add new blogs
 
 **Solution:**
 Adding a new blog implemented.
+
+## Exercise 5.4: bloglist frontend, step4
+Implement notifications which inform the user about successful and unsuccessful operations at the top of the page. For example, when a new blog is added, the following notification can be shown:
+
+*\*picture is available in the course material*
+
+Failed login can show the following notification:
+
+*\*picture is available in the course material*
+
+The notifications must be visible for a few seconds. It is not compulsory to add colors.
+
+**Solution:**
+Reused notifications from the part 3
