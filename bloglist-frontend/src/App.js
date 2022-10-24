@@ -92,6 +92,25 @@ const App = () => {
     }
   }
 
+  const updateBlog = async(blogData) => {
+    try {
+      const updatedBlog = await blogService.update(blogData)
+      updatedBlog.user = blogData.user // updatedBlog has user ID instead of user object
+      setBlogs(blogs.map(blog => blog.id !== blogData.id ? blog : updatedBlog))
+      setMessage(`Blog ${blogData.title} successfully updated`)
+      setMessageType(MessageTypes.Success)
+      setTimeout(() => {
+        setMessageType(MessageTypes.None)
+      }, 5000)
+    } catch (e) {
+      setMessage(`Error while updating ${blogData.title} blog`)
+      setMessageType(MessageTypes.Error)
+      setTimeout(() => {
+        setMessageType(MessageTypes.None)
+      }, 5000)
+    }
+  }
+
   const loginForm = () => (
     <div>
       <h2>log in to application</h2>
@@ -129,7 +148,7 @@ const App = () => {
         </Togglable>
 
         {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog}/>
+          <Blog key={blog.id} blog={blog} updateBlog={updateBlog}/>
         )}
       </div>
     )
