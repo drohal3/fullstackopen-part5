@@ -97,3 +97,12 @@ The form closes when a new blog is created.
 
 **Solution:**
 Implemented as instructed
+
+## Exercise 5.6 Blog list frontend, step6
+**Task:**
+Separate the form for creating a new blog into its own component (if you have not already done so), and move all the states required for creating a new blog to this component.
+
+The component must work like the NoteForm component from the [material](https://fullstackopen.com/en/part5/props_children_and_proptypes) of this part.
+
+**Solution:**
+Blog form moved ot its own component together with its states.
