@@ -73,18 +73,11 @@ const App = () => {
 
   const blogFormRef = useRef()
 
-  const handleNewBlog = async (event) => {
-    event.preventDefault()
-
+  const createNewBlog = async ({title, author, url}) => {
     try {
-      const newBlog = await blogService.create({title: newTitle, author: newAuthor, url: newUrl})
-      setBlogs(blogs.concat(newBlog))
-
-      setNewAuthor('')
-      setNewTitle('')
-      setNewUrl('')
+      const newBlog = await blogService.create({title,author,url})
       blogFormRef.current.toggleVisibility()
-
+      setBlogs(blogs.concat(newBlog))
       setMessage(`A new blog${newBlog.name} by ${newBlog.author} added`)
       setMessageType(MessageTypes.Success)
       setTimeout(() => {
@@ -132,7 +125,7 @@ const App = () => {
         <h2>blogs</h2>
         <p>{user.name} logged in <button onClick={handleLogout}>logout</button></p>
         <Togglable buttonLabel="create new blog" ref={blogFormRef}>
-          <BlogForm handleNewBlog={handleNewBlog}/>
+          <BlogForm createNewBlog={createNewBlog}/>
         </Togglable>
 
         {blogs.map(blog =>
