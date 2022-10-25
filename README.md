@@ -178,3 +178,10 @@ One last warning: if you notice that you are using async/await and the then-meth
 
 **Solution:**
 Like increase action implemented without modifying backend.
+
+## Exercise 5.9: Blog list frontend, step9
+**Task:**
+Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method.
+
+**Solution:**
+Sorting implemented in the rendering part of the blog list.
