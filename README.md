@@ -196,3 +196,10 @@ Show the button for deleting a blog post only if the blog post was added by the 
 
 **Solution:**
 Button added and blog removal logic implemented.
+
+## Exercise 5.11: Blog list frontend, step11
+**Task:**
+Define PropTypes for one of the components of your application.
+
+**Solution:**
+PropTypes defined for Blog component.
