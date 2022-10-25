@@ -1,16 +1,16 @@
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
 import Togglable from './components/Togglable'
-import BlogForm from "./components/BlogForm";
+import BlogForm from './components/BlogForm'
 
-const Notification = ({message, type}) => {
+const Notification = ( { message, type } ) => {
   let notificationClass = `notification ${type}`
 
-  return type !== 'none' ? (<div className={notificationClass}>
-    <p>{message}</p>
+  return type !== 'none' ? (<div className= { notificationClass } >
+    <p> { message } </p>
   </div>) : null
 }
 
@@ -21,7 +21,7 @@ const App = () => {
   const [user, setUser] = useState(null)
 
   const MessageTypes = {
-    Success: "success", Error: "error", None: "none"
+    Success: 'success', Error: 'error', None: 'none'
   }
   const [message, setMessage] = useState(MessageTypes.None)
   const [messageType, setMessageType] = useState(MessageTypes.None)
@@ -56,7 +56,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setMessage("Wrong username or password.")
+      setMessage('Wrong username or password.')
       setMessageType(MessageTypes.Error)
       setTimeout(() => {
         setMessageType(MessageTypes.None)
@@ -73,19 +73,19 @@ const App = () => {
 
   const blogFormRef = useRef()
 
-  const createNewBlog = async ({title, author, url}) => {
+  const createNewBlog = async ( { title, author, url } ) => {
     try {
-      const newBlog = await blogService.create({title,author,url})
+      const newBlog = await blogService.create( { title,author,url } )
       newBlog.user = user
       blogFormRef.current.toggleVisibility()
       setBlogs(blogs.concat(newBlog))
-      setMessage(`A new blog ${newBlog.title} by ${newBlog.author} added`)
+      setMessage(`A new blog ${newBlog.title} by ${ newBlog.author } added`)
       setMessageType(MessageTypes.Success)
       setTimeout(() => {
         setMessageType(MessageTypes.None)
       }, 5000)
     } catch (e) {
-      setMessage("Error, new blog could not be added.")
+      setMessage('Error, new blog could not be added.')
       setMessageType(MessageTypes.Error)
       setTimeout(() => {
         setMessageType(MessageTypes.None)
@@ -143,7 +143,7 @@ const App = () => {
             type="text"
             value={username}
             name="Username"
-            onChange={({target}) => setUsername(target.value)}
+            onChange={( { target } ) => setUsername(target.value)}
           />
         </div>
         <div>
@@ -152,7 +152,7 @@ const App = () => {
             type="password"
             value={password}
             name="Password"
-            onChange={({target}) => setPassword(target.value)}
+            onChange={( { target } ) => setPassword(target.value)}
           />
         </div>
         <button type="submit">login</button>

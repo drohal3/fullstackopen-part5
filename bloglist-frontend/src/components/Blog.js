@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Blog = ({blog, loggedInUser, updateBlog, removeBlog}) => {
+const Blog = ( { blog, loggedInUser, updateBlog, removeBlog } ) => {
   const [isShown, setIsShown] = useState(false)
 
   const handleLikeAction = () => {
@@ -22,26 +22,31 @@ const Blog = ({blog, loggedInUser, updateBlog, removeBlog}) => {
   }
 
   const detailStyle = {
-    display: isShown ? '' : "none"
+    display: isShown ? '' : 'none'
   }
 
   return (
-  <div style={blogStyle}>
-    <div>{blog.title} {blog.author} <button onClick={() => setIsShown(!isShown)}>{isShown ? "hide" : "show"}</button></div>
-    <div style={detailStyle}>
-      {blog.url} <br/>
-      likes: {blog.likes} <button onClick={handleLikeAction}>like</button> <br/>
-      {blog.user && blog.user.name ? blog.user.name : ""}
-      {blog.user && blog.user.username && loggedInUser && loggedInUser.username === blog.user.username &&
-        <>
-          <br/>
-          <button onClick={() => removeBlog(blog)}>remove</button>
-        </>
-      }
-    </div>
+    <div style={blogStyle}>
+      <div>{blog.title} {blog.author}
+        <button onClick={() => setIsShown(!isShown)}>{isShown ? 'hide' : 'show'}</button>
+      </div>
+      <div style={detailStyle}>
+        {blog.url} <br/>
+        likes: {blog.likes}
+        <button onClick={handleLikeAction}>like</button>
+        <br/>
+        {blog.user && blog.user.name ? blog.user.name : ''}
+        {blog.user && blog.user.username && loggedInUser && loggedInUser.username === blog.user.username &&
+          <>
+            <br/>
+            <button onClick={() => removeBlog(blog)}>remove</button>
+          </>
+        }
+      </div>
 
-  </div>  
-)}
+    </div>
+  )
+}
 
 // blog, loggedInUser, updateBlog, removeBlog
 Blog.propTypes = {
