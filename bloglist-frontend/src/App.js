@@ -76,6 +76,7 @@ const App = () => {
   const createNewBlog = async ({title, author, url}) => {
     try {
       const newBlog = await blogService.create({title,author,url})
+      newBlog.user = user
       blogFormRef.current.toggleVisibility()
       setBlogs(blogs.concat(newBlog))
       setMessage(`A new blog ${newBlog.title} by ${newBlog.author} added`)
@@ -104,6 +105,27 @@ const App = () => {
       }, 5000)
     } catch (e) {
       setMessage(`Error while updating ${blogData.title} blog`)
+      setMessageType(MessageTypes.Error)
+      setTimeout(() => {
+        setMessageType(MessageTypes.None)
+      }, 5000)
+    }
+  }
+
+  const removeBlog = async(blog) => {
+    try {
+      if (window.confirm(`Delete ${blog.title} ?`)) {
+        await blogService.remove(blog.id)
+        setBlogs(blogs.filter((a) => a.id !== blog.id))
+        setMessage(`Blog ${blog.title} successfully removed`)
+        setMessageType(MessageTypes.Success)
+        setTimeout(() => {
+          setMessageType(MessageTypes.None)
+        }, 5000)
+      }
+
+    } catch (e) {
+      setMessage(`Could not remove blog ${blog.title}`)
       setMessageType(MessageTypes.Error)
       setTimeout(() => {
         setMessageType(MessageTypes.None)
@@ -148,7 +170,7 @@ const App = () => {
         </Togglable>
 
         {blogs.sort((blog1,blog2) => blog2.likes - blog1.likes).map(blog =>
-          <Blog key={blog.id} blog={blog} updateBlog={updateBlog}/>
+          <Blog key={blog.id} blog={blog} updateBlog={updateBlog} removeBlog={removeBlog} loggedInUser={user}/>
         )}
       </div>
     )

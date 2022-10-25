@@ -185,3 +185,14 @@ Modify the application to list the blog posts by the number of likes. Sorting th
 
 **Solution:**
 Sorting implemented in the rendering part of the blog list.
+
+## Exercise 5.10: Blog list frontend, step10
+**Task:**
+Add a new button for deleting blog posts. Also implement the logic for deleting blog posts in the frontend.
+
+The confirmation dialog for deleting a blog post is easy to implement with the window.confirm function.
+
+Show the button for deleting a blog post only if the blog post was added by the user.
+
+**Solution:**
+Button added and blog removal logic implemented.
