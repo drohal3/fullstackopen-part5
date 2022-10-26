@@ -18,16 +18,13 @@ const loggedInUser = {
   "name": "test test"
 }
 
-const updateBlog = () => {
-  // do nothing
-}
-
 const removeBlog = () => {
   // do nothing
 }
 
 test('blog detail is shown only when show button is clicked', async () => {
-  const { container } = render(<Blog blog={blog} loggedInUser={loggedInUser} updateBlog={updateBlog} removeBlog={removeBlog}/>)
+  const mockHandler = jest.fn()
+  const { container } = render(<Blog blog={blog} loggedInUser={loggedInUser} updateBlog={mockHandler} removeBlog={removeBlog}/>)
   const blogTitle = container.querySelector('.blogTitle')
   const blogDetail = container.querySelector('.blogDetail')
   const showButton = container.querySelector('.showHide')
@@ -39,4 +36,19 @@ test('blog detail is shown only when show button is clicked', async () => {
   expect(blogDetail).not.toHaveStyle('display: none')
   expect(blogDetail).toHaveTextContent(`${blog.url}`)
   expect(blogDetail).toHaveTextContent(`likes: ${blog.likes}`)
+})
+
+test('Like event handler is called twice when like button is clicked twice', async () => {
+  const mockHandler = jest.fn()
+  const { container } = render(<Blog blog={blog} loggedInUser={loggedInUser} updateBlog={mockHandler} removeBlog={removeBlog}/>)
+
+  const showButton = container.querySelector('.showHide')
+  const user = userEvent.setup()
+  await  user.click(showButton)
+
+  const likeButton = screen.getByText('like', {selector: 'button'})
+  await user.click(likeButton)
+  await user.click(likeButton)
+
+  expect(mockHandler.mock.calls).toHaveLength(2)
 })

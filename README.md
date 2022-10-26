@@ -233,3 +233,10 @@ Make a test which checks that the blog's url and number of likes are shown when 
 
 **Solution:**
 Implemented in the same test as the previous exercise.
+
+## Exercise 5.15: Blog list tests, step3
+**Task:**
+Make a test which ensures that if the like button is clicked twice, the event handler the component received as props is called twice.
+
+**Solution:**
+
