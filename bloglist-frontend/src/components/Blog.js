@@ -28,7 +28,7 @@ const Blog = ( { blog, loggedInUser, updateBlog, removeBlog } ) => {
   return (
     <div className='blog' style={blogStyle}>
       <div className="blogTitle">{blog.title} {blog.author}
-        <button onClick={() => setIsShown(!isShown)}>{isShown ? 'hide' : 'show'}</button>
+        <button className="showHide" onClick={() => setIsShown(!isShown)}>{isShown ? 'hide' : 'show'}</button>
       </div>
       <div className='blogDetail' style={detailStyle}>
         {blog.url} <br/>

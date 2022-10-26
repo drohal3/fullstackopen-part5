@@ -227,3 +227,9 @@ Test implemented in Blog.test.js file and passed after when running
 CI=true npm test
 ```
 
+## Exercise 5.14: Blog list tests, step2
+**Task:**
+Make a test which checks that the blog's url and number of likes are shown when the button controlling the shown details has been clicked.
+
+**Solution:**
+Implemented in the same test as the previous exercise.
