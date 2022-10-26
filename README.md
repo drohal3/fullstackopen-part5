@@ -239,4 +239,11 @@ Implemented in the same test as the previous exercise.
 Make a test which ensures that if the like button is clicked twice, the event handler the component received as props is called twice.
 
 **Solution:**
+Implemented as a new test.
 
+## Exercise 5.16: Blog list tests, step4
+**Task:**
+Make a test for the new blog form. The test should check, that the form calls the event handler it received as props with the right details when a new blog is created.
+
+**Solution:**
+Implemented in BlogForm.test.js file.
