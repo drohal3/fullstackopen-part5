@@ -214,3 +214,16 @@ NB: do not run the eslint --init command. It will install the latest version of 
 
 **Solution:**
 ESlint configured and code styles fixed
+
+## Exercise 5.13: Blog list tests, step1
+**Task:**
+Make a test which checks that the component displaying a blog renders the blog's title and author, but does not render its url or number of likes by default.
+
+Add CSS-classes to the component to help the testing as necessary.
+
+**Solution:**
+Test implemented in Blog.test.js file and passed after when running 
+```
+CI=true npm test
+```
+

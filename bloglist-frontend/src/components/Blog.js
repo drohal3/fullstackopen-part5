@@ -26,11 +26,11 @@ const Blog = ( { blog, loggedInUser, updateBlog, removeBlog } ) => {
   }
 
   return (
-    <div style={blogStyle}>
-      <div>{blog.title} {blog.author}
+    <div className='blog' style={blogStyle}>
+      <div className="blogTitle">{blog.title} {blog.author}
         <button onClick={() => setIsShown(!isShown)}>{isShown ? 'hide' : 'show'}</button>
       </div>
-      <div style={detailStyle}>
+      <div className='blogDetail' style={detailStyle}>
         {blog.url} <br/>
         likes: {blog.likes}
         <button onClick={handleLikeAction}>like</button>
