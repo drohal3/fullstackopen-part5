@@ -4,6 +4,12 @@ const testUser = {
   password: 'Test123Test123'
 }
 
+const newBlog = {
+  title: 'new blog',
+  author: 'new author',
+  url: 'somenewurl.com'
+}
+
 describe('Blog app', function () {
   beforeEach(function () {
     cy.request('POST', 'http://localhost:3003/api/testing/reset')
@@ -46,6 +52,33 @@ describe('Blog app', function () {
       cy.contains('password')
 
       cy.get('#notification').should('have.class', 'error')
+    })
+
+    describe('When logged in', function() {
+      beforeEach(function() {
+        cy.get('#username')
+          .type(testUser.username)
+        cy.get('#password')
+          .type(testUser.password)
+        cy.get('#loginBtn')
+          .click()
+      })
+
+      it('A blog can be created', function() {
+        cy.contains('create new blog').click()
+        cy.contains('title')
+        cy.contains('author')
+        cy.contains('url')
+
+        cy.get('#newTitle').type(newBlog.title)
+        cy.get('#newAuthor').type(newBlog.author)
+        cy.get('#newUrl').type(newBlog.url)
+        cy.get('#createBlogBtn').click()
+        cy.contains(`${newBlog.title} ${newBlog.author}`)
+        cy.contains(`A new blog ${newBlog.title} by ${ newBlog.author } added`)
+        cy.get('#notification').should('have.class', 'success')
+
+      })
     })
   })
 })

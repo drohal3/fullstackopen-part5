@@ -302,3 +302,27 @@ Optional bonus exercise: Check that the notification shown with unsuccessful log
 
 **Solution:**
 Implemented as instructed, skipped the bonus exercise checking styles for now.
+
+## Exercise 5.19: bloglist end to end testing, step3
+**Task:**
+Make a test which checks that a logged-in user can create a new blog. The structure of the test could be as follows:
+```
+describe('Blog app', function() {
+// ...
+
+describe('When logged in', function() {
+beforeEach(function() {
+// log in user here
+})
+
+    it('A blog can be created', function() {
+      // ...
+    })
+})
+
+})
+```
+The test has to ensure that a new blog is added to the list of all blogs.
+
+**Solution:**
+Implemented as instructed.
