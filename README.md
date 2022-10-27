@@ -326,3 +326,10 @@ The test has to ensure that a new blog is added to the list of all blogs.
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 5.20: bloglist end to end testing, step4
+**Task:**
+Make a test which checks that users can like a blog.
+
+**Solution:**
+Implemented as instructed

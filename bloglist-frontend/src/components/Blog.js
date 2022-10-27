@@ -33,7 +33,7 @@ const Blog = ( { blog, loggedInUser, updateBlog, removeBlog } ) => {
       <div className='blogDetail' style={detailStyle}>
         {blog.url} <br/>
         likes: {blog.likes}
-        <button onClick={handleLikeAction}>like</button>
+        <button className='likeBtn' onClick={handleLikeAction}>like</button>
         <br/>
         {blog.user && blog.user.name ? blog.user.name : ''}
         {blog.user && blog.user.username && loggedInUser && loggedInUser.username === blog.user.username &&
