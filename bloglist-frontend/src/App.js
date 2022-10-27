@@ -9,7 +9,7 @@ import BlogForm from './components/BlogForm'
 const Notification = ( { message, type } ) => {
   let notificationClass = `notification ${type}`
 
-  return type !== 'none' ? (<div className= { notificationClass } >
+  return type !== 'none' ? (<div id='notification' className= { notificationClass } >
     <p> { message } </p>
   </div>) : null
 }
@@ -140,6 +140,7 @@ const App = () => {
         <div>
           username
           <input
+            id='username'
             type="text"
             value={username}
             name="Username"
@@ -149,13 +150,14 @@ const App = () => {
         <div>
           password
           <input
+            id='password'
             type="password"
             value={password}
             name="Password"
             onChange={( { target } ) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">login</button>
+        <button id='loginBtn' type="submit">login</button>
       </form>
     </div>
   )

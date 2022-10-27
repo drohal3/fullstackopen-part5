@@ -249,6 +249,7 @@ Make a test for the new blog form. The test should check, that the form calls th
 Implemented in BlogForm.test.js file.
 
 ## Exercise 5.17: bloglist end to end testing, step1
+**Task:**
 Configure Cypress to your project. Make a test for checking that the application displays the login form by default.
 
 The structure of the test must be as follows:
@@ -268,3 +269,36 @@ The beforeEach formatting blog must empty the database using for example the met
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 5.18: bloglist end to end testing, step2
+**Task:**
+Make tests for logging in. Test both successful and unsuccessful login attempts. Make a new user in the beforeEach block for the tests.
+
+The test structure extends like so:
+```
+describe('Blog app', function() {
+beforeEach(function() {
+cy.request('POST', 'http://localhost:3003/api/testing/reset')
+// create here a user to backend
+cy.visit('http://localhost:3000')
+})
+
+it('Login form is shown', function() {
+// ...
+})
+
+describe('Login',function() {
+it('succeeds with correct credentials', function() {
+// ...
+})
+
+    it('fails with wrong credentials', function() {
+      // ...
+    })
+})
+})
+```
+Optional bonus exercise: Check that the notification shown with unsuccessful login is displayed red.
+
+**Solution:**
+Implemented as instructed, skipped the bonus exercise checking styles for now.
