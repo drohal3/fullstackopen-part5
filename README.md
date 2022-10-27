@@ -333,3 +333,12 @@ Make a test which checks that users can like a blog.
 
 **Solution:**
 Implemented as instructed
+
+## Exercise 5.21: bloglist end to end testing, step5
+**Task:**
+Make a test for ensuring that the user who created a blog can delete it.
+
+Optional bonus exercise: also check that other users cannot delete the blog.
+
+**Solution:**
+Implemented as instructed.
